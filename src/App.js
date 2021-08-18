@@ -1,18 +1,15 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-import Todos from './containers/Todo';
+import Projects from './containers/Project';
+import 'bulma/css/bulma.min.css';
 
 const App = () => (
-
-
-  <Todos>
+  <Projects>
     <BrowserRouter>
       <MainLayout />
     </BrowserRouter>
-  </Todos>
-  
-
+  </Projects>
 );
 
 export default App;

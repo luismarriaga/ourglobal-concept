@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css'
-
+import Routes from './Routes'
 
 const MainLayout = () => {
   return (
@@ -11,11 +11,9 @@ const MainLayout = () => {
 
       <div id='main-content'>
         <div id='content'> 
-
+          <Routes />
         </div>
       </div>
-      
-      {/* <Routes /> */}
 
     </div>
 

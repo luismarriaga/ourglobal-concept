@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { TodoList } from '../../components/TodoList';
+import { ProjectList } from '../../components/ProjectList';
 
 const Routes = () => (
   <Switch>
     <Route path="/"  exact>
-        <TodoList></TodoList>
+        <ProjectList></ProjectList>
     </Route>
   </Switch>
 );
