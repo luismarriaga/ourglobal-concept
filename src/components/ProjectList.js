@@ -16,7 +16,10 @@ export function ProjectList() {
         <br />
         <ul>
         {projectContext.state.projects.map((item) => (
-            <ProjectItem key={item.id} project={item} />
+            <>
+            <ProjectItem key={item.id} project={item} /> 
+            <br/>
+            </>
         ))}
         </ul>
     </React.Fragment>
