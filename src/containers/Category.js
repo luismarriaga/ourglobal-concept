@@ -3,15 +3,15 @@ import CategoryContext from '../context/Category'
 
 const Categories = ({ children }) => {
     const [categories, setCategories] = React.useState([]);
-    const [modal, setModal] = React.useState(false);
+    const [modal, setModal] = React.useState({});
 
     function add(category) {
         const newCategories = [...categories, category]
         setCategories(newCategories)
     }
 
-    function enableModal() {
-        setModal(!modal)
+    function enableModal(key) {
+        setModal({...modal,[key]:!modal[key]})
     }
 
     return (

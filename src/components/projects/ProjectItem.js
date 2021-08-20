@@ -2,6 +2,7 @@ import React from "react";
 import CategoryContext from "../context/Category";
 import "./Project.css"
 import { CategoryModal } from './CategoryModal';
+import { Link } from "react-router-dom";
 
 
 export function ProjectItem({ project }) {
@@ -11,7 +12,7 @@ export function ProjectItem({ project }) {
   const {id, title, description, initialDate, projectLeader, client } = project;
 
   const handleAddCategory = () => {
-    categoryContext.actions.enableModal()
+    categoryContext.actions.enableModal(id)
   }
 
   return (
@@ -35,14 +36,28 @@ export function ProjectItem({ project }) {
 
           <br />
           <strong>Lider del proyecto:</strong> {projectLeader}
-          
+          <br />
+          <strong>Categorías: </strong>
+
+          <div>
+            <Link> </Link>
+            {categoryContext.state.categories
+              .filter(item => item.projectId === id)
+              .map((item2) => (
+                <>
+                {item2.name}, 
+                <br/>
+                </>
+              ))
+              }
+          </div>
+
         </div>
       </div>
       <footer class="card-footer">
         <button onClick={handleAddCategory} class="button" className="card-footer-item">Agregar categoría</button>
       </footer> 
-      
-      <CategoryModal />
+      <CategoryModal project={project} />
     </div>
   )
 }

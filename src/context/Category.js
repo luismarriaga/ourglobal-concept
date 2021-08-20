@@ -3,7 +3,7 @@ import React from 'react';
 const categoryContext = React.createContext({
     state: {
         categories:[], 
-        modal: false
+        modal: {}
     }, 
     actions: {
         add(category){},
