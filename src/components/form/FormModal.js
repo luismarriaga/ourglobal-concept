@@ -1,6 +1,7 @@
 import React from "react";
 import CategoryContext from "../../context/Category";
 import FormContext from "../../context/Form";
+import { Question } from "./Question";
 
 export function FormModal({category, isOpen}) {
 
@@ -28,7 +29,7 @@ export function FormModal({category, isOpen}) {
                     <p className="modal-card-title">Crear Formulario</p>
                     <button onClick={onCancel} className="delete" aria-label="close"></button>
                 </header>
-                <section className="modal-card-body">
+                {/* <section className="modal-card-body">
                     <div class="field">
                         <label class="label">Nombre</label>
                         <div class="control">
@@ -50,7 +51,9 @@ export function FormModal({category, isOpen}) {
                         </div>
                     </div>
 
-                </section>
+                </section> */}
+
+                <Question></Question>
                 <footer className="modal-card-foot">
                     <button className="button is-success" onClick={onCreate}>Crear </button>
                     <button onClick={onCancel} className="button">Cancelar</button>
