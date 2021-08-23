@@ -1,37 +1,31 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import CategoryContext from "../../context/Category";
+import FormContext from "../../context/Form";
 
-export function CategoryModal({project}) {
+export function FormModal({category, isOpen}) {
 
     const categoryContext = React.useContext(CategoryContext)
+    const formContext = React.useContext(FormContext)
+
+    const { id } = category;
 
     const nameRef = React.useRef();
     const weightRef = React.useRef(); 
     const descriptionRef = React.useRef(); 
 
     function onCancel (){
-        categoryContext.actions.enableModal(project.id)
+        formContext.actions.enableModal(id)
     }
 
     function onCreate(){
-        const category = { 
-            id: uuidv4(),
-            projectId: project.id, 
-            name: nameRef.current.value, 
-            weight:weightRef.current.value, 
-            description:descriptionRef.current.value
-        }
-        categoryContext.actions.add(category)
-        categoryContext.actions.enableModal(project.id)
     }
 
     return (
-        <div className= {categoryContext.state.modal[project.id] ? "modal is-active" : "modal" }>
+        <div className= {formContext.state.modal[id] ? "modal is-active" : "modal" }>
             <div className="modal-background"></div>
             <div className="modal-card">
                 <header className="modal-card-head">
-                    <p className="modal-card-title">Crear Categoría</p>
+                    <p className="modal-card-title">Crear Formulario</p>
                     <button onClick={onCancel} className="delete" aria-label="close"></button>
                 </header>
                 <section className="modal-card-body">
@@ -52,7 +46,7 @@ export function CategoryModal({project}) {
                     <div class="field">
                         <label class="label">Descripción</label>
                         <div class="control">
-                            <textarea class="textarea" maxLength="200" ref={descriptionRef} placeholder="Escriba una descripción de la categoría..."></textarea>
+                            <textarea class="textarea" ref={descriptionRef} placeholder="Escriba una descripción de la categoría..."></textarea>
                         </div>
                     </div>
 

@@ -1,9 +1,24 @@
-.card-categories{
-    width: 50%;
-    margin: 5%;
-}
 
 .list-category{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+
+}
+
+.category-title{
+    font-family: Avenir LT Std;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    text-align: center;
+}
+.card-categories{
+    width: 26%;
+    height: 20%;
+    margin-bottom: 3%;
+    word-wrap: break-word;
 }

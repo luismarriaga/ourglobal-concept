@@ -13,11 +13,8 @@ const Routes = () => (
     <Route path="/"  exact>
         <ProjectList></ProjectList>
     </Route>
-    <Route path="/categories">
-        <CategoryList></CategoryList>
-    </Route>
-    <Route path="/proyectos/:id/categorias">
-      <Holamundo />
+    <Route path="/projects/:id/categories">
+      <CategoryList />
     </Route>
   </Switch>
 );

@@ -37,7 +37,8 @@ export function ProjectItem({ project }) {
           <br />
           <strong>Lider del proyecto:</strong> {projectLeader}
           <br />
-          <Link to="/categories">
+          
+          <Link to={"/projects/"+id+"/categories"}>
           <strong>Categorías: </strong>
 
           <div>
