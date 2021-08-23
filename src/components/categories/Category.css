@@ -1,0 +1,9 @@
+.card-categories{
+    width: 50%;
+    margin: 5%;
+}
+
+.list-category{
+    display: flex;
+    flex-wrap: wrap;
+}

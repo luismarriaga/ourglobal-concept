@@ -1,6 +1,6 @@
 import React from "react";
 import { ProjectItem } from "./ProjectItem";
-import ProjectContext from "../context/Project";
+import ProjectContext from "../../context/Project";
 import "./Project.css"
 
 export function ProjectList() {

@@ -1,7 +1,7 @@
 import React from "react";
-import CategoryContext from "../context/Category";
+import CategoryContext from "../../context/Category";
 import "./Project.css"
-import { CategoryModal } from './CategoryModal';
+import { CategoryModal } from '../categories/CategoryModal';
 import { Link } from "react-router-dom";
 
 
@@ -37,10 +37,10 @@ export function ProjectItem({ project }) {
           <br />
           <strong>Lider del proyecto:</strong> {projectLeader}
           <br />
+          <Link to="/categories">
           <strong>Categorías: </strong>
 
           <div>
-            <Link> </Link>
             {categoryContext.state.categories
               .filter(item => item.projectId === id)
               .map((item2) => (
@@ -51,6 +51,7 @@ export function ProjectItem({ project }) {
               ))
               }
           </div>
+          </Link>
 
         </div>
       </div>

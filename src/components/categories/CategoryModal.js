@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryContext from "../context/Category";
+import CategoryContext from "../../context/Category";
 
 export function CategoryModal({project}) {
 
