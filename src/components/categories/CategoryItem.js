@@ -31,7 +31,7 @@ export function CategoryItem({ category }) {
           </div>
         </div>
         <footer class="card-footer">
-          <button class="button" onClick={openModal}  className="card-footer-item">Agregar formulario</button>
+          <button class="button" onClick={openModal} className="card-footer-item">Agregar formulario</button>
         </footer> 
       </div>
       <FormModal category={category}/>

@@ -1,0 +1,11 @@
+.button.question-button{
+    background-color: #e74c3c;
+    color: #ffff;
+    border-color: transparent;
+}
+
+.button.cancel-question-button{
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    border-color: transparent;
+}
