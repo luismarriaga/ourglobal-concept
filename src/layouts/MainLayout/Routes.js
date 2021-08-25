@@ -3,11 +3,6 @@ import { Route, Switch, useParams } from 'react-router-dom';
 import { CategoryList } from '../../components/categories/CategoryList';
 import { ProjectList } from '../../components/projects/ProjectList';
 
-const Holamundo = () => {
-  const params = useParams()
-  return <pre>{JSON.stringify(params)}</pre>
-}
-
 const Routes = () => (
   <Switch>
     <Route path="/"  exact>

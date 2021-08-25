@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import CategoryContext from "../../context/Category";
 import FormContext from "../../context/Form";
 import { Question } from "./Question";
+import { v4 as uuidv4 } from "uuid";
 import "./Form.css"
-import { useParams } from "react-router-dom";
 
 
 export function FormModal({category}) {
@@ -17,14 +16,25 @@ export function FormModal({category}) {
 
     const nameRef = React.useRef();
     const weightRef = React.useRef(); 
-    const rankRef = React.useRef(); 
+    const descriptionRef = React.useRef(); 
     
     function onCancel (){
         formContext.actions.enableModal(id)
     }
 
     function onCreate(){
+        const form = {
+            id: uuidv4(), 
+            categoryId: id,
+            name: nameRef.current.value, 
+            weight: weightRef.current.value, 
+            description: descriptionRef.current.value, 
+            questions
+        }
         
+        formContext.actions.add(form)
+        formContext.actions.enableModal(id)
+
     }
 
     function handleAddQuestion(){
@@ -47,14 +57,7 @@ export function FormModal({category}) {
                     <div class="field">
                         <label class="label">Nombre</label>
                         <div class="control">
-                            <input class="input" ref={nameRef} type="text" placeholder="Escriba el nombre de la pregunta..." />
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label class="label">Descripcion</label>
-                        <div class="control">
-                            <input class="input" ref={rankRef} type="number" min="0" max="100" placeholder="Escriba el rango de opciones que desea de 1 a 10..." />
+                            <input class="input" ref={nameRef} type="text" placeholder="Escriba el nombre del formulario..." />
                         </div>
                     </div>
 
@@ -64,18 +67,28 @@ export function FormModal({category}) {
                             <input class="input" ref={weightRef} type="number" min="0" max="100" placeholder="Escriba el peso de la pregunta..." />
                         </div>
                     </div> 
-                        {questions .map((item) => (
-                        <>
-                        {item.name}
-                        <br/>
-                        </>
-                        ))}
+
+                    <div class="field">
+                        <label class="label">Descripcion</label>
+                        <div class="control">
+                            <textarea class="textarea" maxLength="200" ref={descriptionRef} placeholder="Escriba la descripción del formulario..." />
+                        </div>
+                    </div>
+                    
+                    {questions.length > 0 ? <label class="label">Preguntas</label> : <></>}
+                    <div class="field questions-list">
+                        <ol>
+                            {questions.map((item) => (
+                            <li>{item.name}</li>
+                            ))}
+                        </ol>
+                    </div>
                     <div style={{display:"flex", justifyContent:"space-evenly"}}>
                         <button onClick={handleAddQuestion} className="button question-button">Agregar pregunta</button>
                         <button onClick={handleRemoveQuestion} className="button cancel-question-button ">Remover</button>
                     </div>
                     <br/>
-                    {isOpenQuestionForm ? <Question questions={questions} setQuestions={setQuestions} setIsOpenQuestionForm={setIsOpenQuestionForm} idCategory={id}/>:  <></> }
+                    {isOpenQuestionForm ? <Question questions={questions} setQuestions={setQuestions} setIsOpenQuestionForm={setIsOpenQuestionForm} />:  <></> }
                 </section>
                 <footer className="modal-card-foot">
                     <button className="button is-danger" onClick={onCreate}>Crear </button>

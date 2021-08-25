@@ -8,7 +8,8 @@ const Projects = ({children}) => {
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lorem vel vestibulum netus volutpat ullamcorper praesent. Risus sed pretium id aenean.', 
         initialDate: '28/08/2021', 
         projectLeader: 'Alexander Jimenez', 
-        client: 'Western Union',        
+        client: 'Western Union',
+        teammates:["Luis Marriaga", "Angie Vargas", "Donald Torres", "Rosa Lina"]     
     }, 
     {
         id: '2',
@@ -17,6 +18,7 @@ const Projects = ({children}) => {
         initialDate: '28/08/2021', 
         projectLeader: 'Alexander Jimenez', 
         client: 'Western Union',
+        teammates:["Luis Marriaga", "Angie Vargas", "Donald Torres", "Rosa Lina"]     
     }]);
 
     return (

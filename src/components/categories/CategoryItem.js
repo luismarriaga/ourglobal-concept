@@ -28,6 +28,14 @@ export function CategoryItem({ category }) {
               <br />
               <strong>Peso:</strong> {weight}
               <br />
+              <strong>Formularios:</strong>
+              <ol>
+              {formContext.state.forms
+              .filter((item) => item.categoryId === id)
+              .map((item) => (
+                  <li>{item.name}</li>
+              ))}
+              </ol>
           </div>
         </div>
         <footer class="card-footer">

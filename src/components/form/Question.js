@@ -2,7 +2,7 @@ import React from 'react';
 import FormContext from "../../context/Form";
 import { v4 as uuidv4 } from "uuid";
 
-export function Question({questions, setQuestions, setIsOpenQuestionForm, idCategory}){
+export function Question({questions, setQuestions, setIsOpenQuestionForm}){
 
     const nameRef = React.useRef();
     const rankRef = React.useRef();
@@ -15,7 +15,6 @@ export function Question({questions, setQuestions, setIsOpenQuestionForm, idCate
         debugger;
         const question = {
             id: uuidv4(),
-            idCategory: idCategory, 
             name: nameRef.current.value, 
             rank: rankRef.current.value, 
             weight: weightRef.current.value
@@ -38,7 +37,7 @@ export function Question({questions, setQuestions, setIsOpenQuestionForm, idCate
             <div class="field">
                 <label class="label">Rango de respuesta</label>
                 <div class="control">
-                    <input class="input" ref={rankRef} type="number" min="0" max="100" placeholder="Escriba el rango de opciones que desea de 1 a 10..." />
+                    <input class="input" ref={rankRef} type="number" min="0" max="10" placeholder="Escriba el rango de opciones que desea de 1 a 10..." />
                 </div>
             </div>
 
