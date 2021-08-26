@@ -6,3 +6,27 @@
     line-height: 43px;
     text-align: center;
 }
+
+.list-project{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+
+}
+
+.card.project-card{
+    width: 40%;
+    margin-bottom: 3%;
+    word-wrap: break-word;
+}
+.card-header{
+    justify-content: space-between;
+}
+
+.card-header-title.add-form{
+    color: #e74c3c;
+    font-weight: 400;
+    cursor: pointer;
+}

@@ -14,6 +14,18 @@ const Forms = ({ children }) => {
         setModal({...modal,[key]:!modal[key]})
     }
 
+    function addAnswers(answer, idForm){
+        let ques = forms
+        .find(form => idForm === form.id)
+        .questions
+        .map(questi => ({...questi, answer:answer[questi.id]})) 
+
+        let newForm = ({...forms.find(form => idForm === form.id), questions:ques})
+        let formCopy = [...forms]
+
+
+    }
+
     return (
         <FormContext.Provider
             value={{
@@ -23,7 +35,8 @@ const Forms = ({ children }) => {
                 },
                 actions: { 
                     add, 
-                    enableModal
+                    enableModal,
+                    addAnswers
                 }
             }}
         >

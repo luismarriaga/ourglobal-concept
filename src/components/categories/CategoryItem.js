@@ -2,6 +2,7 @@ import React from "react";
 import CategoryContext from "../../context/Category";
 import FormContext from "../../context/Form"
 import { FormModal } from "../form/FormModal";
+import { Link } from "react-router-dom";
 
 export function CategoryItem({ category }) {
 
@@ -15,11 +16,14 @@ export function CategoryItem({ category }) {
   }
 
   return (
-    <div className="card-categories">
-      <div class="card">
+      <div class="card card-categories">
         <header class="card-header">
           <p class="card-header-title">
-            {name} - {id}
+            {name}
+          </p>
+
+          <p onClick={openModal} class="card-header-title add-form">
+            + Añadir formulario
           </p>
         </header>
         <div class="card-content">
@@ -28,20 +32,19 @@ export function CategoryItem({ category }) {
               <br />
               <strong>Peso:</strong> {weight}
               <br />
-              <strong>Formularios:</strong>
-              <ol>
-              {formContext.state.forms
-              .filter((item) => item.categoryId === id)
-              .map((item) => (
-                  <li>{item.name}</li>
-              ))}
-              </ol>
+              
+              <Link to={"/projects/"+projectId+"/categories/"+id+"/forms"}>
+                <strong>Formularios:</strong>
+                <ol>
+                {formContext.state.forms
+                .filter((item) => item.categoryId === id)
+                .map((item) => (
+                    <li>{item.name}</li>
+                ))}
+                </ol>
+              </Link>
           </div>
         </div>
-        <footer class="card-footer">
-          <button class="button" onClick={openModal} className="card-footer-item">Agregar formulario</button>
-        </footer> 
-      </div>
       <FormModal category={category}/>
     </div>
   )

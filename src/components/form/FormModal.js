@@ -38,13 +38,8 @@ export function FormModal({category}) {
     }
 
     function handleAddQuestion(){
-        setIsOpenQuestionForm(true)
+        setIsOpenQuestionForm(!isOpenQuestionForm)
     }
-
-    function handleRemoveQuestion(){
-        setIsOpenQuestionForm(false)
-    }
-
     return (
         <div className= {formContext.state.modal[id] ? "modal is-active" : "modal" }>
             <div className="modal-background"></div>
@@ -75,6 +70,10 @@ export function FormModal({category}) {
                         </div>
                     </div>
                     
+                    <div style={{display:"flex", justifyContent:"flex-start", marginBottom:"2%"}}>
+                        <p onClick={handleAddQuestion} className="add-question" >+ Agregar pregunta</p>
+                    </div>
+
                     {questions.length > 0 ? <label class="label">Preguntas</label> : <></>}
                     <div class="field questions-list">
                         <ol>
@@ -82,10 +81,6 @@ export function FormModal({category}) {
                             <li>{item.name}</li>
                             ))}
                         </ol>
-                    </div>
-                    <div style={{display:"flex", justifyContent:"space-evenly"}}>
-                        <button onClick={handleAddQuestion} className="button question-button">Agregar pregunta</button>
-                        <button onClick={handleRemoveQuestion} className="button cancel-question-button ">Remover</button>
                     </div>
                     <br/>
                     {isOpenQuestionForm ? <Question questions={questions} setQuestions={setQuestions} setIsOpenQuestionForm={setIsOpenQuestionForm} />:  <></> }

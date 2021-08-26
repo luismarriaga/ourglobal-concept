@@ -13,3 +13,25 @@
 .field.questions-list{
     margin-left: 3%;
 }
+
+.form{
+    background-color: #ffff;
+}
+
+.alice-carousel{
+    width: 50% !important;
+}
+.card-header-title{
+    flex-grow: 0 !important;
+}
+.questions{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.add-question{
+    color: #e74c3c;
+    font-weight: 400;
+    cursor: pointer;
+}

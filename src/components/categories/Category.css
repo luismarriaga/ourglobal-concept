@@ -16,9 +16,20 @@
     line-height: 43px;
     text-align: center;
 }
-.card-categories{
-    width: 26%;
+.card.card-categories{
+    width: 35%;
     height: 20%;
+    margin-right: 1%;
     margin-bottom: 3%;
     word-wrap: break-word;
+}
+
+.card-header{
+    justify-content: space-between;
+}
+
+.card-header-title.add-form{
+    color: #e74c3c;
+    font-weight: 400;
+    cursor: pointer;
 }

@@ -16,16 +16,15 @@ export function ProjectItem({ project }) {
   }
 
   return (
-    <div className="card">
+    <div className="card project-card">
       <header className="card-header">
         <p className="card-header-title">
-          {title} - {client}
+          {title} - {client} 
         </p>
-        <button className="card-header-icon" aria-label="more options">
-          <span className="icon">
-            <i className="fas fa-angle-down" aria-hidden="false"></i>
-          </span>
-        </button>
+
+        <p onClick={handleAddCategory} class="card-header-title add-form">
+            + Añadir categoría
+        </p>
       </header>
       <div className="card-content">
         <div className="content">
@@ -46,27 +45,23 @@ export function ProjectItem({ project }) {
             ))}
           </ul>
           <br />
-
+          
+          <strong>Categorías: </strong> {categoryContext.state.categories.length > 0 ? <></> : <p>Sin categories</p>}
           <Link to={"/projects/"+id+"/categories"}>
-          <strong>Categorías: </strong>
-          <div>
-            {categoryContext.state.categories
-              .filter(item => item.projectId === id)
-              .map((item2) => (
-                <>
-                {item2.name}, 
-                <br/>
-                </>
-              ))
-              }
-          </div>
+            <ul>
+              {categoryContext.state.categories
+                .filter(item => item.projectId === id)
+                .map((item) => (
+                  <>
+                  <li>{item.name} </li>
+                  <br/>
+                  </>
+                ))
+                }
+            </ul>
           </Link>
-
         </div>
       </div>
-      <footer className="card-footer">
-        <button onClick={handleAddCategory} class="button" className="card-footer-item">Agregar categoría</button>
-      </footer> 
       <CategoryModal project={project} />
     </div>
   )

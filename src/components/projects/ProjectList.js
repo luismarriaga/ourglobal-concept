@@ -14,14 +14,15 @@ export function ProjectList() {
         </strong>
         <br />
         <br />
-        <ul>
-        {projectContext.state.projects.map((item) => (
-            <>
-            <ProjectItem key={item.id} project={item} /> 
-            <br/>
-            </>
-        ))}
-        </ul>
+        <div className="list-project">
+          {projectContext.state.projects.map((item) => (
+              <>
+              <ProjectItem key={item.id} project={item} /> 
+              <br/>
+              </>
+          ))}
+        </div>
+
     </React.Fragment>
   );
 }

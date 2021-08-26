@@ -1,5 +1,4 @@
 import React from 'react';
-import FormContext from "../../context/Form";
 import { v4 as uuidv4 } from "uuid";
 
 export function Question({questions, setQuestions, setIsOpenQuestionForm}){
@@ -8,19 +7,16 @@ export function Question({questions, setQuestions, setIsOpenQuestionForm}){
     const rankRef = React.useRef();
     const weightRef = React.useRef();
 
-    const formContext = React.useContext(FormContext)
-
     function handleAddQuestion(){
 
-        debugger;
         const question = {
             id: uuidv4(),
             name: nameRef.current.value, 
             rank: rankRef.current.value, 
-            weight: weightRef.current.value
+            weight: weightRef.current.value,
+            answer: 1
         }
 
-        debugger;
         setIsOpenQuestionForm(false)
         setQuestions([...questions, question])
     }
