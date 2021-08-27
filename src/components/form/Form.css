@@ -35,3 +35,12 @@
     font-weight: 400;
     cursor: pointer;
 }
+
+.content.form-description{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin: 0% 10%;
+    flex-direction: column;
+    text-align: center;
+}

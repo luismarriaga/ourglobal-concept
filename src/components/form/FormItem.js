@@ -4,6 +4,7 @@ import FormContext from '../../context/Form';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import "./Form.css"
+import { QuestionModal } from './QuestionModal';
 
 const QuestionSlider = withStyles({
   root: {
@@ -49,7 +50,7 @@ const QuestionSlider = withStyles({
 
 export function FormItem({form}) {
 
-    const {id, name, description, questions } = form
+    const {id, name, description, weight, questions } = form
 
     const [answer, setAnswer] = useState(questions.reduce((acumulator, actualValue) => ({...acumulator, [actualValue.id]:actualValue.answer}), {}))
     const formContext = useContext(FormContext)
@@ -63,26 +64,27 @@ export function FormItem({form}) {
     function handleFormAnswers(){
       formContext.actions.addAnswers(answer, id)
     }
-    function holamundo(){
-      console.log(formContext.state.forms.find(fo => fo.id === id))
+
+    function handleOpenQuestionModal() {
+      formContext.actions.enableQuestionModal(id)
     }
 
     return(
-        <div className="card">
+      <div className="card">
         <header className="card-header">
           <p className="card-header-title">
             {name}
           </p>
           
-          <p  className="card-header-title add-form">
+          <p onClick={handleOpenQuestionModal} className="card-header-title add-form">
             + Añadir pregunta
           </p>
         </header>
         <div className="card-content questions">
-          <div className="content">
-               {description}
+          <div className="content form-description">
+               <p>{description}</p>
+               <strong style={{fontSize:"80%" }}>peso: {weight}</strong> 
           </div>
-          
           <br /> 
           <div className="questions">
               {questions.map((question) => (
@@ -103,10 +105,10 @@ export function FormItem({form}) {
                 </div>
               ))}
           </div>
-          
-          <button class="button question-button" onClick={handleFormAnswers}>Enviar formulario</button>
-          <button class="button question-button" onClick={holamundo}>Te veo</button>
+          <button class="button " onClick={handleFormAnswers}>Enviar formulario</button>
         </div>
-    </div>
+        
+        <QuestionModal form={form} />
+      </div>
     )
 }

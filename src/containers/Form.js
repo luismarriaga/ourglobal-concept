@@ -4,6 +4,7 @@ import FormContext from '../context/Form'
 const Forms = ({ children }) => {
     const [forms, setForms] = React.useState([]);
     const [modal, setModal] = React.useState({});
+    const [questionModal, setQuestionModal] = React.useState({})
 
     function add(form) {
         const newForms = [...forms, form]
@@ -14,15 +15,27 @@ const Forms = ({ children }) => {
         setModal({...modal,[key]:!modal[key]})
     }
 
+    function enableQuestionModal(key){
+        setQuestionModal({...questionModal, [key]:!questionModal[key]})
+    }
+
     function addAnswers(answer, idForm){
         let ques = forms
         .find(form => idForm === form.id)
         .questions
         .map(questi => ({...questi, answer:answer[questi.id]})) 
 
-        let newForm = ({...forms.find(form => idForm === form.id), questions:ques})
-        let formCopy = [...forms]
+        let formWithNewAnswers = ({...forms.find(form => idForm === form.id), questions:ques})
+        
+        const formIndex = forms.findIndex(form => form.id = idForm)
 
+        const newForms = [...forms]
+        
+        newForms[formIndex] = formWithNewAnswers
+        
+        console.log(newForms)
+
+        setForms(newForms)
 
     }
 
@@ -32,10 +45,12 @@ const Forms = ({ children }) => {
                 state: { 
                     forms, 
                     modal,
+                    questionModal
                 },
                 actions: { 
                     add, 
                     enableModal,
+                    enableQuestionModal,
                     addAnswers
                 }
             }}

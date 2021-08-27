@@ -83,7 +83,7 @@ export function FormModal({category}) {
                         </ol>
                     </div>
                     <br/>
-                    {isOpenQuestionForm ? <Question questions={questions} setQuestions={setQuestions} setIsOpenQuestionForm={setIsOpenQuestionForm} />:  <></> }
+                    {isOpenQuestionForm ? <Question questions={questions} setQuestions={setQuestions} />:  <></> }
                 </section>
                 <footer className="modal-card-foot">
                     <button className="button is-danger" onClick={onCreate}>Crear </button>

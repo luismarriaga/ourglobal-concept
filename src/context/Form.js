@@ -3,11 +3,13 @@ import React from 'react';
 const FormContext = React.createContext({
     state: {
         forms:[], 
-        modal: {}
+        modal: {}, 
+        questionModal:{}
     }, 
     actions: {
         add(form){},
         enableModal(){}, 
+        enableQuestionModal(){},
         addAnswers(answer, idForm){}
     }
 })

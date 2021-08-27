@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from "uuid";
 
-export function Question({questions, setQuestions, setIsOpenQuestionForm}){
+export function Question({questions, setQuestions}){
 
     const nameRef = React.useRef();
     const rankRef = React.useRef();
@@ -17,7 +17,10 @@ export function Question({questions, setQuestions, setIsOpenQuestionForm}){
             answer: 1
         }
 
-        setIsOpenQuestionForm(false)
+        nameRef.current.value = null
+        rankRef.current.value = null
+        weightRef.current.value = null
+
         setQuestions([...questions, question])
     }
 
