@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import FormContext from "../../context/Form";
-import { Question } from "./Question";
+import { v4 as uuidv4 } from "uuid";
 import "./Form.css"
 
 
@@ -8,15 +8,27 @@ export function QuestionModal({form}) {
 
     const formContext = React.useContext(FormContext)
 
-    const [questions, setQuestions] = useState([])
-
     const { id } = form;
+
+    const nameRef = React.useRef();
+    const rankRef = React.useRef();
+    const weightRef = React.useRef();
     
     function onCancel (){
         formContext.actions.enableQuestionModal(id)
     }
 
     function onCreate(){
+
+        const question = {
+            id: uuidv4(),
+            name: nameRef.current.value, 
+            rank: rankRef.current.value, 
+            weight: weightRef.current.value,
+            answer: 1
+        }
+
+        console.log(question);
         formContext.actions.enableQuestionModal(id)
     }
 
@@ -29,7 +41,26 @@ export function QuestionModal({form}) {
                     <button onClick={onCancel} className="delete" aria-label="close"></button>
                 </header>
                 <section className="modal-card-body">
-                    <Question questions={questions} setQuestions={setQuestions} />
+                    <div class="field">
+                        <label class="label">Pregunta</label>
+                        <div class="control">
+                            <input class="input" ref={nameRef} type="text" placeholder="Escriba el nombre de la pregunta..." />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Rango de respuesta</label>
+                        <div class="control">
+                            <input class="input" ref={rankRef} type="number" min="0" max="10" placeholder="Escriba el rango de opciones que desea de 1 a 10..." />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Peso</label>
+                        <div class="control">
+                            <input class="input" ref={weightRef} type="number" min="0" max="100" placeholder="Escriba el peso de la pregunta..." />
+                        </div>
+                    </div> 
                 </section>
                 <footer className="modal-card-foot">
                     <button className="button is-danger" onClick={onCreate}>Crear </button>
