@@ -1,12 +1,10 @@
 import React from "react";
-import CategoryContext from "../../context/Category";
 import FormContext from "../../context/Form"
 import { FormModal } from "../form/FormModal";
 import { Link } from "react-router-dom";
 
 export function CategoryItem({ category }) {
 
-  const categoryContext = React.useContext(CategoryContext)
   const formContext = React.useContext(FormContext)
 
   const {projectId, id,  name, weight, description} = category;
@@ -16,18 +14,18 @@ export function CategoryItem({ category }) {
   }
 
   return (
-      <div class="card card-categories">
-        <header class="card-header">
-          <p class="card-header-title">
+      <div className="card card-categories">
+        <header className="card-header">
+          <p className="card-header-title">
             {name}
           </p>
 
-          <p onClick={openModal} class="card-header-title add-form">
+          <p onClick={openModal} className="card-header-title add-form">
             + Añadir formulario
           </p>
         </header>
-        <div class="card-content">
-          <div class="content">
+        <div className="card-content">
+          <div className="content">
               <strong>Descripción:</strong> {description}
               <br />
               <strong>Peso:</strong> {weight}

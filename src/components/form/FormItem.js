@@ -70,7 +70,7 @@ export function FormItem({form}) {
     }
 
     return(
-      <div className="card">
+      <div className="card" style={{marginBottom:"2%"}}>
         <header className="card-header">
           <p className="card-header-title">
             {name}

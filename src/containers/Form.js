@@ -33,8 +33,27 @@ const Forms = ({ children }) => {
         
         newForms[formIndex] = formWithNewAnswers
         
-        console.log(newForms)
+        setForms(newForms)
 
+    }
+
+    function addQuestions(questions, id){
+        let ques = forms
+        .find(form => id === form.id)
+        .questions
+
+        let newQuestions = [...ques, questions]
+        
+        let newForm = ({...forms.find(form => id === form.id), questions:newQuestions})
+
+        const formIndex = forms.findIndex(form => form.id = id)
+
+        const newForms = [...forms]
+        
+        newForms[formIndex] = newForm
+
+        console.log(newForm);
+        
         setForms(newForms)
 
     }
@@ -51,7 +70,8 @@ const Forms = ({ children }) => {
                     add, 
                     enableModal,
                     enableQuestionModal,
-                    addAnswers
+                    addAnswers,
+                    addQuestions
                 }
             }}
         >

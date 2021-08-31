@@ -15,9 +15,9 @@ export function ProjectList() {
         <br />
         <br />
         <div className="list-project">
-          {projectContext.state.projects.map((item) => (
+          {projectContext.state.projects.map((item, i) => (
               <>
-              <ProjectItem key={item.id} project={item} /> 
+              <ProjectItem key={i} project={item} /> 
               <br/>
               </>
           ))}

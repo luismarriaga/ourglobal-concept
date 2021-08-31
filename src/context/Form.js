@@ -10,7 +10,8 @@ const FormContext = React.createContext({
         add(form){},
         enableModal(){}, 
         enableQuestionModal(){},
-        addAnswers(answer, idForm){}
+        addAnswers(answer, idForm){},
+        addQuestions(questions, id){}
     }
 })
 

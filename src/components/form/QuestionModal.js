@@ -28,7 +28,8 @@ export function QuestionModal({form}) {
             answer: 1
         }
 
-        console.log(question);
+        console.log(question, id);
+        formContext.actions.addQuestions(question, id)
         formContext.actions.enableQuestionModal(id)
     }
 

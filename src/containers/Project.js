@@ -3,7 +3,7 @@ import ProjectContext from '../context/Project'
 import { v4 as uuidv4 } from "uuid";
 
 const Projects = ({children}) => {
-    const [projects, setProjects] = useState([{
+    const [projects] = useState([{
         id: uuidv4(),
         title: 'Proyecto Principal', 
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lorem vel vestibulum netus volutpat ullamcorper praesent. Risus sed pretium id aenean.', 

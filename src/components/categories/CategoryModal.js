@@ -35,24 +35,24 @@ export function CategoryModal({project}) {
                     <button onClick={onCancel} className="delete" aria-label="close"></button>
                 </header>
                 <section className="modal-card-body">
-                    <div class="field">
-                        <label class="label">Nombre</label>
-                        <div class="control">
-                            <input class="input" ref={nameRef} type="text" placeholder="Escriba el nombre de la categoría..." />
+                    <div className="field">
+                        <label className="label">Nombre</label>
+                        <div className="control">
+                            <input className="input" ref={nameRef} type="text" placeholder="Escriba el nombre de la categoría..." />
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label class="label">Peso</label>
-                        <div class="control">
-                            <input class="input" ref={weightRef} type="number" min="0" max="100" placeholder="Escriba el peso de la categoría..." />
+                    <div className="field">
+                        <label className="label">Peso</label>
+                        <div className="control">
+                            <input className="input" ref={weightRef} type="number" min="0" max="100" placeholder="Escriba el peso de la categoría..." />
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label class="label">Descripción</label>
-                        <div class="control">
-                            <textarea class="textarea" maxLength="200" ref={descriptionRef} placeholder="Escriba una descripción de la categoría..."></textarea>
+                    <div className="field">
+                        <label className="label">Descripción</label>
+                        <div className="control">
+                            <textarea className="textarea" maxLength="200" ref={descriptionRef} placeholder="Escriba una descripción de la categoría..."></textarea>
                         </div>
                     </div>
 

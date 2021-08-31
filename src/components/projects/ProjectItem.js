@@ -22,7 +22,7 @@ export function ProjectItem({ project }) {
           {title} - {client} 
         </p>
 
-        <p onClick={handleAddCategory} class="card-header-title add-form">
+        <p onClick={handleAddCategory} className="card-header-title add-form">
             + Añadir categoría
         </p>
       </header>
@@ -40,8 +40,8 @@ export function ProjectItem({ project }) {
           <br />
           <strong>Integrantes:</strong>
           <ul> 
-            {teammates.map((item) => (
-              <li>{item}</li>
+            {teammates.map((item, i) => (
+              <li key={i}>{item}</li>
             ))}
           </ul>
           <br />

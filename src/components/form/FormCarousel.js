@@ -3,7 +3,7 @@ import FormContext from '../../context/Form';
 import { useParams } from 'react-router-dom';
 import { FormItem } from './FormItem';
 
-import AliceCarousel from 'react-alice-carousel';
+//import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import "./Form.css"
 
@@ -17,7 +17,6 @@ export function FormCarousel() {
                 {formContext.state.forms
                 .filter(form => form.categoryId === categoryId)
                 .map((form) => (<FormItem form={form}/>))}
-            
         </React.Fragment>
 
 
