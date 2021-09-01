@@ -20,7 +20,6 @@ const Forms = ({ children }) => {
     }
 
     function addAnswers(answer, idForm){
-       
         let ques = forms
         .find(form => idForm === form.id)
         .questions
@@ -28,13 +27,12 @@ const Forms = ({ children }) => {
 
         let formWithNewAnswers = ({...forms.find(form => idForm === form.id), questions:ques})
         
-        const formIndex = forms.findIndex(form => form.id = idForm)
+        const formIndex = forms.findIndex(form => form.id === idForm)
 
         const newForms = [...forms]
         
         newForms[formIndex] = formWithNewAnswers
         
-        //console.log(newForms);
         setForms(newForms)
 
     }
