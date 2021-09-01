@@ -7,7 +7,7 @@ export function CategoryItem({ category }) {
 
   const formContext = React.useContext(FormContext)
 
-  const {projectId, id,  name, weight, description} = category;
+  const {projectId, id,  name, weight, description, ponderadoCategory} = category;
 
   const openModal= () => {
     formContext.actions.enableModal(id)
@@ -41,7 +41,14 @@ export function CategoryItem({ category }) {
                 ))}
                 </ol>
               </Link>
-          </div>
+
+              <br />
+              {ponderadoCategory != 0 
+              ? <>
+                  <strong>Nivel de satisfaccíon:</strong> {ponderadoCategory}% 
+                </> 
+              : <> </>}
+          </div> 
         </div>
       <FormModal category={category}/>
     </div>

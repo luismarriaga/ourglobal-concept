@@ -9,7 +9,7 @@ export function ProjectItem({ project }) {
 
   const categoryContext = React.useContext(CategoryContext)
 
-  const {id, title, description, initialDate, projectLeader, client, teammates} = project;
+  const {id, title, description, initialDate, projectLeader, client, teammates, ponderadoProjects} = project;
 
   const handleAddCategory = () => {
     categoryContext.actions.enableModal(id)
@@ -60,6 +60,14 @@ export function ProjectItem({ project }) {
                 }
             </ul>
           </Link>
+
+          <br />
+          {ponderadoProjects != 0 
+          ? <>
+              <strong>Nivel de satisfaccíon:</strong> {ponderadoProjects}% 
+            </> 
+          : <> </>}
+          
         </div>
       </div>
       <CategoryModal project={project} />

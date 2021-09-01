@@ -20,6 +20,7 @@ const Forms = ({ children }) => {
     }
 
     function addAnswers(answer, idForm){
+       
         let ques = forms
         .find(form => idForm === form.id)
         .questions
@@ -33,6 +34,7 @@ const Forms = ({ children }) => {
         
         newForms[formIndex] = formWithNewAnswers
         
+        //console.log(newForms);
         setForms(newForms)
 
     }
@@ -58,6 +60,21 @@ const Forms = ({ children }) => {
 
     }
 
+    function calculatePonderado(){
+        let pondForm = 0
+        forms.map( form => {
+            form.questions.map(question => {
+                question.ponderadoQuestion = (question.answer/question.rank)*question.weight
+                pondForm =  pondForm + (question.answer/question.rank*question.weight)
+            })
+            console.log('ponderadoForm: '+ pondForm);
+            form.ponderadoForm = pondForm*form.weight/100
+            pondForm = 0
+        })
+
+        console.log(forms);
+    }
+
     return (
         <FormContext.Provider
             value={{
@@ -71,7 +88,8 @@ const Forms = ({ children }) => {
                     enableModal,
                     enableQuestionModal,
                     addAnswers,
-                    addQuestions
+                    addQuestions,
+                    calculatePonderado
                 }
             }}
         >

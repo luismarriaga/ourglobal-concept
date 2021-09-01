@@ -25,7 +25,8 @@ export function QuestionModal({form}) {
             name: nameRef.current.value, 
             rank: rankRef.current.value, 
             weight: weightRef.current.value,
-            answer: 1
+            answer: 1,
+            ponderadoQuestion: 0
         }
 
         console.log(question, id);

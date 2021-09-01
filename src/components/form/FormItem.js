@@ -50,7 +50,7 @@ const QuestionSlider = withStyles({
 
 export function FormItem({form}) {
 
-    const {id, name, description, weight, questions } = form
+    const {id, name, description, weight, questions, ponderadoForm } = form
 
     const [answer, setAnswer] = useState(questions.reduce((acumulator, actualValue) => ({...acumulator, [actualValue.id]:actualValue.answer}), {}))
     const formContext = useContext(FormContext)
@@ -63,6 +63,7 @@ export function FormItem({form}) {
     
     function handleFormAnswers(){
       formContext.actions.addAnswers(answer, id)
+      //formContext.actions.calculatePonderado()
     }
 
     function handleOpenQuestionModal() {
@@ -83,7 +84,10 @@ export function FormItem({form}) {
         <div className="card-content questions">
           <div className="content form-description">
                <p>{description}</p>
-               <strong style={{fontSize:"80%" }}>peso: {weight}</strong> 
+               <strong style={{fontSize:"80%" }}>peso: {weight}</strong>
+               {ponderadoForm != 0 
+               ? <strong style={{fontSize:"80%" }}>Nivel de satisfaccíon: {ponderadoForm}%</strong>
+               : <> </>}
           </div>
           <br /> 
           <div className="questions">

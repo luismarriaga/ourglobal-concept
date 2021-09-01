@@ -29,7 +29,8 @@ export function FormModal({category}) {
             name: nameRef.current.value, 
             weight: weightRef.current.value, 
             description: descriptionRef.current.value, 
-            questions
+            questions,
+            ponderadoForm: 0
         }
         
         formContext.actions.add(form)

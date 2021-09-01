@@ -11,7 +11,8 @@ const FormContext = React.createContext({
         enableModal(){}, 
         enableQuestionModal(){},
         addAnswers(answer, idForm){},
-        addQuestions(questions, id){}
+        addQuestions(questions, id){},
+        calculatePonderado(){}
     }
 })
 
