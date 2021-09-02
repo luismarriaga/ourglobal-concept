@@ -1,5 +1,4 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import CategoryContext from "../../context/Category";
 
 export function CategoryModal({project}) {
@@ -16,12 +15,10 @@ export function CategoryModal({project}) {
 
     function onCreate(){
         const category = { 
-            id: uuidv4(),
             projectId: project.id, 
             name: nameRef.current.value, 
             weight:weightRef.current.value, 
-            description:descriptionRef.current.value,
-            ponderadoCategory: 0
+            description:descriptionRef.current.value
         }
         categoryContext.actions.add(category)
         categoryContext.actions.enableModal(project.id)
@@ -36,24 +33,24 @@ export function CategoryModal({project}) {
                     <button onClick={onCancel} className="delete" aria-label="close"></button>
                 </header>
                 <section className="modal-card-body">
-                    <div className="field">
-                        <label className="label">Nombre</label>
-                        <div className="control">
-                            <input className="input" ref={nameRef} type="text" placeholder="Escriba el nombre de la categoría..." />
+                    <div class="field">
+                        <label class="label">Nombre</label>
+                        <div class="control">
+                            <input class="input" ref={nameRef} type="text" placeholder="Escriba el nombre de la categoría..." />
                         </div>
                     </div>
 
-                    <div className="field">
-                        <label className="label">Peso</label>
-                        <div className="control">
-                            <input className="input" ref={weightRef} type="number" min="0" max="100" placeholder="Escriba el peso de la categoría..." />
+                    <div class="field">
+                        <label class="label">Peso</label>
+                        <div class="control">
+                            <input class="input" ref={weightRef} type="number" min="0" max="100" placeholder="Escriba el peso de la categoría..." />
                         </div>
                     </div>
 
-                    <div className="field">
-                        <label className="label">Descripción</label>
-                        <div className="control">
-                            <textarea className="textarea" maxLength="200" ref={descriptionRef} placeholder="Escriba una descripción de la categoría..."></textarea>
+                    <div class="field">
+                        <label class="label">Descripción</label>
+                        <div class="control">
+                            <textarea class="textarea" ref={descriptionRef} placeholder="Escriba una descripción de la categoría..."></textarea>
                         </div>
                     </div>
 

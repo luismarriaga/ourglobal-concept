@@ -63,7 +63,6 @@ export function FormItem({form}) {
     
     function handleFormAnswers(){
       formContext.actions.addAnswers(answer, id)
-      //formContext.actions.calculatePonderado()
     }
 
     function handleOpenQuestionModal() {

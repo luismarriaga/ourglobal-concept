@@ -20,12 +20,20 @@ const Forms = ({ children }) => {
     }
 
     function addAnswers(answer, idForm){
+        debugger
+        let poderadoFormulario = 0
         let ques = forms
         .find(form => idForm === form.id)
         .questions
-        .map(questi => ({...questi, answer:answer[questi.id]})) 
+        .map(questi => ({...questi, answer:answer[questi.id], ponderadoQuestion: answer[questi.id]/questi.rank*questi.weight})) 
 
-        let formWithNewAnswers = ({...forms.find(form => idForm === form.id), questions:ques})
+        ques.map(q => {
+            poderadoFormulario = poderadoFormulario + q.ponderadoQuestion
+        })
+
+        console.log(poderadoFormulario);
+
+        let formWithNewAnswers = ({...forms.find(form => idForm === form.id), questions:ques, ponderadoForm: poderadoFormulario})
         
         const formIndex = forms.findIndex(form => form.id === idForm)
 
@@ -33,7 +41,9 @@ const Forms = ({ children }) => {
         
         newForms[formIndex] = formWithNewAnswers
         
+        
         setForms(newForms)
+        console.log(forms);
 
     }
 
@@ -46,7 +56,7 @@ const Forms = ({ children }) => {
         
         let newForm = ({...forms.find(form => id === form.id), questions:newQuestions})
 
-        const formIndex = forms.findIndex(form => form.id = id)
+        const formIndex = forms.findIndex(form => form.id === id)
 
         const newForms = [...forms]
         
@@ -56,21 +66,6 @@ const Forms = ({ children }) => {
         
         setForms(newForms)
 
-    }
-
-    function calculatePonderado(){
-        let pondForm = 0
-        forms.map( form => {
-            form.questions.map(question => {
-                question.ponderadoQuestion = (question.answer/question.rank)*question.weight
-                pondForm =  pondForm + (question.answer/question.rank*question.weight)
-            })
-            console.log('ponderadoForm: '+ pondForm);
-            form.ponderadoForm = pondForm*form.weight/100
-            pondForm = 0
-        })
-
-        console.log(forms);
     }
 
     return (
@@ -86,8 +81,7 @@ const Forms = ({ children }) => {
                     enableModal,
                     enableQuestionModal,
                     addAnswers,
-                    addQuestions,
-                    calculatePonderado
+                    addQuestions
                 }
             }}
         >
