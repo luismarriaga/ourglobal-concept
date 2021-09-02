@@ -14,6 +14,10 @@ const Categories = ({ children }) => {
         setModal({...modal,[key]:!modal[key]})
     }
 
+    function addPonderado(forms){
+        console.log(forms[2].ponderadoForm);
+    }
+
     return (
         <CategoryContext.Provider
             value={{
@@ -23,7 +27,8 @@ const Categories = ({ children }) => {
                 },
                 actions: { 
                     add, 
-                    enableModal
+                    enableModal,
+                    addPonderado
                 }
             }}
         >

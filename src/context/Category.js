@@ -7,7 +7,8 @@ const categoryContext = React.createContext({
     }, 
     actions: {
         add(category){},
-        enableModal(){}
+        enableModal(){},
+        addPonderado(forms){}
     }
 })
 

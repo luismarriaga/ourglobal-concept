@@ -20,7 +20,7 @@ const Forms = ({ children }) => {
     }
 
     function addAnswers(answer, idForm){
-        debugger
+    
         let poderadoFormulario = 0
         let ques = forms
         .find(form => idForm === form.id)
@@ -30,8 +30,6 @@ const Forms = ({ children }) => {
         ques.map(q => {
             poderadoFormulario = poderadoFormulario + q.ponderadoQuestion
         })
-
-        console.log(poderadoFormulario);
 
         let formWithNewAnswers = ({...forms.find(form => idForm === form.id), questions:ques, ponderadoForm: poderadoFormulario})
         

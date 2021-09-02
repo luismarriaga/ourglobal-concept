@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import {withStyles } from '@material-ui/styles';
 import FormContext from '../../context/Form';
+import CategoryContext from '../../context/Category'
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import "./Form.css"
@@ -54,6 +55,7 @@ export function FormItem({form}) {
 
     const [answer, setAnswer] = useState(questions.reduce((acumulator, actualValue) => ({...acumulator, [actualValue.id]:actualValue.answer}), {}))
     const formContext = useContext(FormContext)
+    const categoryContext = useContext(CategoryContext)
 
     const handlerFor = (id) => {
       return (event,value)=>{
@@ -63,6 +65,7 @@ export function FormItem({form}) {
     
     function handleFormAnswers(){
       formContext.actions.addAnswers(answer, id)
+      categoryContext.actions.addPonderado(formContext.state.forms)
     }
 
     function handleOpenQuestionModal() {

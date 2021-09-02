@@ -13,6 +13,7 @@ export function CategoryItem({ category }) {
     formContext.actions.enableModal(id)
   }
 
+  console.log(ponderadoCategory);
   return (
       <div className="card card-categories">
         <header className="card-header">
