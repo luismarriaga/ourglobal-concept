@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {withStyles } from '@material-ui/styles';
 import FormContext from '../../context/Form';
 import CategoryContext from '../../context/Category'
@@ -57,6 +57,10 @@ export function FormItem({form}) {
     const formContext = useContext(FormContext)
     const categoryContext = useContext(CategoryContext)
 
+    useEffect(()=>{
+      categoryContext.actions.addPonderado(formContext.state.forms)
+    }, [formContext.state.forms])
+
     const handlerFor = (id) => {
       return (event,value)=>{
         setAnswer({...answer,[id]:value})
@@ -65,7 +69,6 @@ export function FormItem({form}) {
     
     function handleFormAnswers(){
       formContext.actions.addAnswers(answer, id)
-      categoryContext.actions.addPonderado(formContext.state.forms)
     }
 
     function handleOpenQuestionModal() {

@@ -75,7 +75,7 @@ export function FormModal({category}) {
                         <p onClick={handleAddQuestion} className="add-question" >+ Agregar pregunta</p>
                     </div>
 
-                    {questions.length > 0 ? <label class="label">Preguntas</label> : <></>}
+                    {questions.length > 0 && <label class="label">Preguntas</label>}
                     <div class="field questions-list">
                         <ol>
                             {questions.map((item) => (
@@ -84,7 +84,7 @@ export function FormModal({category}) {
                         </ol>
                     </div>
                     <br/>
-                    {isOpenQuestionForm ? <Question questions={questions} setQuestions={setQuestions} />:  <></> }
+                    {isOpenQuestionForm && <Question questions={questions} setQuestions={setQuestions} /> }
                 </section>
                 <footer className="modal-card-foot">
                     <button className="button is-danger" onClick={onCreate}>Crear </button>

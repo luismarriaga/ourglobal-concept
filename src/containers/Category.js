@@ -15,7 +15,10 @@ const Categories = ({ children }) => {
     }
 
     function addPonderado(forms){
-        console.log(forms[2].ponderadoForm);
+        console.log(forms);
+        forms.map(form => {
+            
+        })
     }
 
     return (
