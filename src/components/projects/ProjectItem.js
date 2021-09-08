@@ -1,4 +1,4 @@
-import React, { useEffect  } from "react";
+import React, { useEffect, useState  } from "react";
 import CategoryContext from "../../context/Category";
 import "./Project.css"
 import { CategoryModal } from '../categories/CategoryModal';
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export function ProjectItem({ project }) {
 
   const categoryContext = React.useContext(CategoryContext)
+  const [showLinks, setShowLinks] = useState(true);
 
   const {id, title, description, initialDate, projectLeader, client, teammates, ponderadoProjects} = project;
 
@@ -15,17 +16,15 @@ export function ProjectItem({ project }) {
     categoryContext.actions.enableModal(id)
   }
 
-  var showLinks = true;
-
   useEffect(()=>{
     debugger;
-    console.log(validateShowLinks())
-    showLinks = validateShowLinks()
+    console.log(showLinks)
+    setShowLinks(validateShowLinks())
   }, [categoryContext.state.categories])
 
 
   const validateShowLinks = () => {
-    var showItemsLinks = false;
+    var showItemsLinks = true;
     if (categoryContext.state.categories.length > 1) {
      var fullWeight = categoryContext.state.categories
      .reduce(function (accumulator, current) {
@@ -36,7 +35,6 @@ export function ProjectItem({ project }) {
     }else if(categoryContext.state.categories.length === 1){
       showItemsLinks = true;
     }
-    console.log("Dentro del meetodo" + showItemsLinks)
     return showItemsLinks;
                   
   }

@@ -15,6 +15,7 @@ export function CategoryModal({project}) {
     }
 
     function onCreate(){
+        debugger;
         const category = { 
             id: uuidv4(),
             projectId: project.id, 
@@ -23,10 +24,11 @@ export function CategoryModal({project}) {
             description:descriptionRef.current.value,
             ponderadoCategory: 0
         }
-        (categoryContext.state.categories.length === 1 && category.weight === "100") || validateCreated() ? alert("No se puede agregar")
+        ((categoryContext.state.categories.length === 1 && weightRef.current.value === "100") || validateCreated ) ? alert("No se puede agregar")
         : categoryContext.actions.add(category)
         categoryContext.actions.enableModal(project.id)
     }
+
 
     const validateCreated = () => {
         if(categoryContext.state.categories.length === 1){
