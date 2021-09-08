@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import CategoryContext from "../../context/Category";
 import "./Project.css"
 import { CategoryModal } from '../categories/CategoryModal';
 import { Link } from "react-router-dom";
+import ProjectContext from "../../context/Project";
 
 
 export function ProjectItem({ project }) {
 
-  const categoryContext = React.useContext(CategoryContext)
+  const categoryContext = useContext(CategoryContext)
+  const projectContext = useContext(ProjectContext)
 
   const {id, title, description, initialDate, projectLeader, client, teammates, ponderadoProjects} = project;
+
+  useEffect(()=>{
+    projectContext.actions.changePonderado(categoryContext.state.categories)
+  }, [categoryContext.state.categories])
 
   const handleAddCategory = () => {
     categoryContext.actions.enableModal(id)

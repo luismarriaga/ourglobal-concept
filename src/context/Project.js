@@ -5,7 +5,7 @@ const projectContext = React.createContext({
         projects:[]
     },
     actions:{
-        changePonderado(ponderado){}
+        changePonderado(categories){}
     }
 })
 
