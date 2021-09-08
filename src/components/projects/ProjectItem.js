@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect  } from "react";
 import CategoryContext from "../../context/Category";
 import "./Project.css"
 import { CategoryModal } from '../categories/CategoryModal';
@@ -13,6 +13,32 @@ export function ProjectItem({ project }) {
 
   const handleAddCategory = () => {
     categoryContext.actions.enableModal(id)
+  }
+
+  var showLinks = true;
+
+  useEffect(()=>{
+    debugger;
+    console.log(validateShowLinks())
+    showLinks = validateShowLinks()
+  }, [categoryContext.state.categories])
+
+
+  const validateShowLinks = () => {
+    var showItemsLinks = false;
+    if (categoryContext.state.categories.length > 1) {
+     var fullWeight = categoryContext.state.categories
+     .reduce(function (accumulator, current) {
+      return (+accumulator.weight) + (+current.weight);
+      })
+      debugger;
+      showItemsLinks = fullWeight === 100 ? true : false;
+    }else if(categoryContext.state.categories.length === 1){
+      showItemsLinks = true;
+    }
+    console.log("Dentro del meetodo" + showItemsLinks)
+    return showItemsLinks;
+                  
   }
 
   return (
@@ -46,7 +72,10 @@ export function ProjectItem({ project }) {
           </ul>
           <br />
           
-          <strong>Categorías: </strong> {categoryContext.state.categories.length > 0 ? <></> : <p>Sin categories</p>}
+          <strong>Categorías: </strong> 
+          {categoryContext.state.categories.length > 0 ? <> </> 
+          : <p>Sin categories</p>
+          }
           <Link to={"/projects/"+id+"/categories"}>
             <ul>
               {categoryContext.state.categories
@@ -60,9 +89,10 @@ export function ProjectItem({ project }) {
                 }
             </ul>
           </Link>
-
+          <strong>{showLinks ? <> <p>Aparezco</p> </> : <> </> } </strong>
+          
           <br />
-          {ponderadoProjects != 0 
+          {ponderadoProjects !== 0
           ? <>
               <strong>Nivel de satisfaccíon:</strong> {ponderadoProjects}% 
             </> 

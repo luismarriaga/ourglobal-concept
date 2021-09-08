@@ -23,8 +23,18 @@ export function CategoryModal({project}) {
             description:descriptionRef.current.value,
             ponderadoCategory: 0
         }
-        categoryContext.actions.add(category)
+        (categoryContext.state.categories.length === 1 && category.weight === "100") || validateCreated() ? alert("No se puede agregar")
+        : categoryContext.actions.add(category)
         categoryContext.actions.enableModal(project.id)
+    }
+
+    const validateCreated = () => {
+        if(categoryContext.state.categories.length === 1){
+            if(categoryContext.state.categories[0].weight === "100"){
+                return true;
+            }
+        }
+        return false;
     }
 
     return (
