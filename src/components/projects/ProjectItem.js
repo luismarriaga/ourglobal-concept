@@ -17,7 +17,6 @@ export function ProjectItem({ project }) {
   }
 
   useEffect(()=>{
-    debugger;
     console.log(showLinks)
     setShowLinks(validateShowLinks())
   }, [categoryContext.state.categories])
@@ -30,7 +29,6 @@ export function ProjectItem({ project }) {
      .reduce(function (accumulator, current) {
       return (+accumulator.weight) + (+current.weight);
       })
-      debugger;
       showItemsLinks = fullWeight === 100 ? true : false;
     }else if(categoryContext.state.categories.length === 1){
       showItemsLinks = true;
