@@ -1,26 +1,29 @@
-import React, { useEffect, useState  } from "react";
+
+import React, { useEffect,useContext,useState } from "react";
 import CategoryContext from "../../context/Category";
 import "./Project.css"
 import { CategoryModal } from '../categories/CategoryModal';
 import { Link } from "react-router-dom";
+import ProjectContext from "../../context/Project";
 
 
 export function ProjectItem({ project }) {
 
   const categoryContext = React.useContext(CategoryContext)
   const [showLinks, setShowLinks] = useState(true);
+  const projectContext = useContext(ProjectContext)
 
   const {id, title, description, initialDate, projectLeader, client, teammates, ponderadoProjects} = project;
-
-  const handleAddCategory = () => {
-    categoryContext.actions.enableModal(id)
-  }
 
   useEffect(()=>{
     console.log(showLinks)
     setShowLinks(validateShowLinks())
+    projectContext.actions.changePonderado(categoryContext.state.categories)
   }, [categoryContext.state.categories])
 
+  const handleAddCategory = () => {
+    categoryContext.actions.enableModal(id)
+  }
 
   const validateShowLinks = () => {
     var showItemsLinks = true;

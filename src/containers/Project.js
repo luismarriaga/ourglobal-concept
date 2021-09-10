@@ -25,8 +25,18 @@ const Projects = ({children}) => {
     }, 
     ]);
 
-    function changePonderado(ponderado){
-        
+    function changePonderado(categories){
+        debugger
+        projects.map(proj =>{
+            let acomuladoCategory = 0
+            categories.filter(category => category.projectId === proj.id)
+            .map(cat => {
+                acomuladoCategory = acomuladoCategory + (cat.ponderadoCategory * cat.weight / 100)
+            })
+            proj.ponderadoProjects = acomuladoCategory
+        })
+
+        console.log(projects);
     }
 
     return (

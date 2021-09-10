@@ -28,8 +28,6 @@ export function QuestionModal({form}) {
             answer: 1,
             ponderadoQuestion: 0
         }
-
-        console.log(question, id);
         formContext.actions.addQuestions(question, id)
         formContext.actions.enableQuestionModal(id)
     }

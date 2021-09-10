@@ -15,10 +15,14 @@ const Categories = ({ children }) => {
     }
 
     function addPonderado(forms){
-        console.log(forms);
-        forms.map(form => {
-            
-        })
+        categories.map(cat =>{
+            let acomuladoForm = 0
+            forms.filter(form => form.categoryId === cat.id)
+            .map(form => {
+                acomuladoForm = acomuladoForm + (form.ponderadoForm * form.weight / 100)
+            })
+            cat.ponderadoCategory = acomuladoForm
+        }) 
     }
 
     return (

@@ -59,8 +59,6 @@ const Forms = ({ children }) => {
         const newForms = [...forms]
         
         newForms[formIndex] = newForm
-
-        console.log(newForm);
         
         setForms(newForms)
 
