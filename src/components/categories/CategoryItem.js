@@ -53,7 +53,7 @@ export function CategoryItem({ category }) {
               <br />
               {ponderadoCategory != 0 &&
                   <>
-                 <strong style={{fontSize:"80%" }}>Nivel de satisfaccíon: {ponderadoCategory}% </strong>
+                 <strong style={{fontSize:"80%" }}>Nivel de Satisfaccíon: {ponderadoCategory}% </strong>
                  {ponderadoCategory <= 40 
                  ? <progress class="progress is-danger" value={ponderadoCategory} max="100"/>
                  : ponderadoCategory <= 70 && ponderadoCategory > 40 

@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from "react";
+
+import React, { useEffect,useContext,useState } from "react";
 import CategoryContext from "../../context/Category";
 import "./Project.css"
 import { CategoryModal } from '../categories/CategoryModal';
@@ -8,12 +9,35 @@ import ProjectContext from "../../context/Project";
 
 export function ProjectItem({ project }) {
 
-  const categoryContext = useContext(CategoryContext)
+  const categoryContext = React.useContext(CategoryContext)
+  const [showLinks, setShowLinks] = useState(true);
+  const projectContext = useContext(ProjectContext)
 
   const {id, title, description, initialDate, projectLeader, client, teammates, ponderadoProjects} = project;
 
+  useEffect(()=>{
+    console.log(showLinks)
+    setShowLinks(validateShowLinks())
+    projectContext.actions.changePonderado(categoryContext.state.categories)
+  }, [categoryContext.state.categories])
+
   const handleAddCategory = () => {
     categoryContext.actions.enableModal(id)
+  }
+
+  const validateShowLinks = () => {
+    var showItemsLinks = true;
+    if (categoryContext.state.categories.length > 1) {
+     var fullWeight = categoryContext.state.categories
+     .reduce(function (accumulator, current) {
+      return (+accumulator.weight) + (+current.weight);
+      })
+      showItemsLinks = fullWeight === 100 ? true : false;
+    }else if(categoryContext.state.categories.length === 1){
+      showItemsLinks = true;
+    }
+    return showItemsLinks;
+                  
   }
 
   return (
@@ -47,8 +71,12 @@ export function ProjectItem({ project }) {
           </ul>
           <br />
           
-          <strong>Categorías: </strong> {categoryContext.state.categories.length > 0 ? <></> : <p>Sin categories</p>}
-          <Link to={"/projects/"+id+"/categories"}>
+          <strong>Categorías: </strong> 
+          {categoryContext.state.categories.length > 0 ? <> </> 
+          : <p>Sin categories</p>
+          }
+          
+          {showLinks ? <Link to={"/projects/"+id+"/categories"}>
             <ul>
               {categoryContext.state.categories
                 .filter(item => item.projectId === id)
@@ -60,12 +88,13 @@ export function ProjectItem({ project }) {
                 ))
                 }
             </ul>
-          </Link>
-
+          </Link>  
+          : <p>La suma de los pesos no llega al 100%</p>}
+          
           <br />
           {ponderadoProjects != 0 &&
                   <>
-                 <strong style={{fontSize:"80%" }}>Nivel de satisfaccíon: {ponderadoProjects}%</strong>
+                 <strong style={{fontSize:"80%" }}>Nivel de Satisfaccíon: {ponderadoProjects}%</strong>
                  {ponderadoProjects <= 40 
                  ? <progress class="progress is-danger" value={ponderadoProjects} max="100"/>
                  : ponderadoProjects <= 70 && ponderadoProjects > 40 
