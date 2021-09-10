@@ -90,9 +90,15 @@ export function FormItem({form}) {
           <div className="content form-description">
                <p>{description}</p>
                <strong style={{fontSize:"80%" }}>peso: {weight}</strong>
-               {ponderadoForm != 0 
-               ? <strong style={{fontSize:"80%" }}>Nivel de satisfaccíon: {ponderadoForm}%</strong>
-               : <> </>}
+               {ponderadoForm != 0 &&
+                  <>
+                 <strong style={{fontSize:"80%" }}>Nivel de satisfaccíon: {ponderadoForm}% </strong>
+                 {ponderadoForm <= 40 
+                 ? <progress class="progress is-danger" value={ponderadoForm} max="100"/>
+                 : ponderadoForm <= 70 && ponderadoForm > 40 
+                 ? <progress class="progress is-warning" value={ponderadoForm} max="100"/>
+                : <progress class="progress is-success" value={ponderadoForm} max="100"/>}
+                 </>}
           </div>
           <br /> 
           <div className="questions">

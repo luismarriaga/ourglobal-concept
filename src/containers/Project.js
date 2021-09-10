@@ -26,7 +26,6 @@ const Projects = ({children}) => {
     ]);
 
     function changePonderado(categories){
-        debugger
         projects.map(proj =>{
             let acomuladoCategory = 0
             categories.filter(category => category.projectId === proj.id)
@@ -36,7 +35,6 @@ const Projects = ({children}) => {
             proj.ponderadoProjects = acomuladoCategory
         })
 
-        console.log(projects);
     }
 
     return (

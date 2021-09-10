@@ -16,6 +16,7 @@ const Categories = ({ children }) => {
 
     function addPonderado(forms){
         categories.map(cat =>{
+            
             let acomuladoForm = 0
             forms.filter(form => form.categoryId === cat.id)
             .map(form => {

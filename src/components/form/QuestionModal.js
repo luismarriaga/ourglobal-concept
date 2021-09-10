@@ -28,6 +28,11 @@ export function QuestionModal({form}) {
             answer: 1,
             ponderadoQuestion: 0
         }
+
+        nameRef.current.value = null
+        rankRef.current.value = null
+        weightRef.current.value = null
+
         formContext.actions.addQuestions(question, id)
         formContext.actions.enableQuestionModal(id)
     }

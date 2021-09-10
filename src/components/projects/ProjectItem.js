@@ -9,13 +9,8 @@ import ProjectContext from "../../context/Project";
 export function ProjectItem({ project }) {
 
   const categoryContext = useContext(CategoryContext)
-  const projectContext = useContext(ProjectContext)
 
   const {id, title, description, initialDate, projectLeader, client, teammates, ponderadoProjects} = project;
-
-  useEffect(()=>{
-    projectContext.actions.changePonderado(categoryContext.state.categories)
-  }, [categoryContext.state.categories])
 
   const handleAddCategory = () => {
     categoryContext.actions.enableModal(id)
@@ -68,11 +63,15 @@ export function ProjectItem({ project }) {
           </Link>
 
           <br />
-          {ponderadoProjects != 0 
-          ? <>
-              <strong>Nivel de satisfaccíon:</strong> {ponderadoProjects}% 
-            </> 
-          : <> </>}
+          {ponderadoProjects != 0 &&
+                  <>
+                 <strong style={{fontSize:"80%" }}>Nivel de satisfaccíon: {ponderadoProjects}%</strong>
+                 {ponderadoProjects <= 40 
+                 ? <progress class="progress is-danger" value={ponderadoProjects} max="100"/>
+                 : ponderadoProjects <= 70 && ponderadoProjects > 40 
+                 ? <progress class="progress is-warning" value={ponderadoProjects} max="100"/>
+                : <progress class="progress is-success" value={ponderadoProjects} max="100"/>}
+                 </>}
           
         </div>
       </div>

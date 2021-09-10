@@ -23,6 +23,11 @@ export function CategoryModal({project}) {
             description:descriptionRef.current.value,
             ponderadoCategory: 0
         }
+
+        nameRef.current.value = null
+        weightRef.current.value = null
+        descriptionRef.current.value = null
+
         categoryContext.actions.add(category)
         categoryContext.actions.enableModal(project.id)
     }
