@@ -23,9 +23,35 @@ export function CategoryModal({project}) {
             description:descriptionRef.current.value,
             ponderadoCategory: 0
         }
-        categoryContext.actions.add(category)
+        validateCreated(category)
         categoryContext.actions.enableModal(project.id)
     }
+
+    function validateCreated(inputCategory) {
+        ((categoryContext.state.categories.length === 1 && weightRef.current.value === "100") || validateCreatedPercent(inputCategory) ) ? alert("No se puede agregar")
+        : categoryContext.actions.add(inputCategory)
+    }
+
+
+    const validateCreatedPercent = (inputCategory) => {
+        debugger;
+        if(categoryContext.state.categories.length >= 1){
+            if(categoryContext.state.categories[0].weight === "100" || validateSumIsNotGreatherThan100(inputCategory)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function validateSumIsNotGreatherThan100(inputCategory) {
+        var totalSum = 0;
+        categoryContext.state.categories
+        .forEach(function (num) {
+            totalSum += (+num.weight);
+          });
+        return totalSum + (+inputCategory.weight) > 100 ? true : false;
+    }
+
 
     return (
         <div className= {categoryContext.state.modal[project.id] ? "modal is-active" : "modal" }>
